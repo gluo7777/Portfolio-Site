@@ -12,9 +12,9 @@ staticErrorPage.appendChild(title);
 
 
 function replaceWithHtml(pageTitle) {
-    var displayArea = document.querySelector("div#displayarea");
+    var displayArea = document.querySelector("div#contents");
     // server-side logic needs to sanitize input before returning anything
-    fetch(pageTitle).then(function (response) {
+    fetch(pageTitle+'.html').then(function (response) {
         if (response.ok) {
             return response.text(); // don't forget to add return
         } else {
@@ -25,9 +25,24 @@ function replaceWithHtml(pageTitle) {
         if (result === false) {
             displayArea.replaceChild(staticErrorPage, displayArea.firstChild);
         } else {
-            var display = document.createElement("div");
-            display.innerHTML = result;
-            displayArea.replaceChild(display, displayArea.firstChild);
+        	var childNode = htmlToElement(result);
+        	if(displayArea.childElementCount > 0){
+        		displayArea.replaceChild(childNode,displayArea.firstChild);
+        	}else{        		
+        		displayArea.appendChild(childNode);
+        	}
         }
     });
+}
+
+/**
+ * @param {String} HTML representing a single element
+ * @return {Element}
+ */
+function htmlToElement(html) {
+	// template elmeent introduced in HTML5 has no restrictions on children
+    var template = document.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = html;
+    return template.content.firstChild;
 }
