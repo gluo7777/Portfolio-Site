@@ -2,12 +2,13 @@
 	<div class="inner">
 		<h3 class="masthead-brand">William's Site</h3>
 		<nav class="nav nav-masthead justify-content-center">
-			<a th:classappend="${#httpServletRequest.getRequestURI() == '/home' ? 'active':''}" class="nav-link" th:href="@{/home}">Home</a>
-			<a th:classappend="${#httpServletRequest.getRequestURI() == '/projects' ? 'active':''}" class="nav-link" th:href="@{/projects}">Projects</a>
-			<a th:classappend="${#httpServletRequest.getRequestURI() == '/apps' ? 'active':''}" class="nav-link" th:href="@{/apps}">Apps</a>
-			<a th:classappend="${#httpServletRequest.getRequestURI() == '/ideas' ? 'active':''}" class="nav-link" th:href="@{/ideas}">Ideas</a>
-			<a th:classappend="${#httpServletRequest.getRequestURI() == '/examples' ? 'active':''}" class="nav-link" th:href="@{/examples}">Examples</a>
-			<a th:classappend="${#httpServletRequest.getRequestURI() == '/contact' ? 'active':''}" class="nav-link" th:href="@{/contact}">Contact</a>
+			<h1 th:text="${activePage}"></h1>
+			<a th:classappend="${homeActive != null ? 'active':''}" class="nav-link" th:href="@{/home}">Home</a>
+			<a th:classappend="${projectsActive != null ? 'active':''}" class="nav-link" th:href="@{/projects}">Projects</a>
+			<a th:classappend="${appsActive != null ? 'active':''}" class="nav-link" th:href="@{/apps}">Apps</a>
+			<a th:classappend="${ideasActive != null ? 'active':''}" class="nav-link" th:href="@{/ideas}">Ideas</a>
+			<a th:classappend="${examplesActive != null ? 'active':''}" class="nav-link" th:href="@{/examples}">Examples</a>
+			<a th:classappend="${contactActive != null ? 'active':''}" class="nav-link" th:href="@{/contact}">Contact</a>
 		</nav>
 	</div>
 </header>
