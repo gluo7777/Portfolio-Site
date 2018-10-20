@@ -15,7 +15,7 @@ define(function() {
 	});
 
 	// load required modules
-	requirejs(['jquery'], function($) {
+	requirejs(['jquery'/*,'gui'*/], function($/*,gui*/) {
 		$(document).ready(function(event) {
 			console.log('jquery-%s.js loaded successfully.',jqueryVersion);
 		});

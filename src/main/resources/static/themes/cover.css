@@ -42,7 +42,7 @@ body {
 }
 
 .cover-container {
-  max-width: 42em;
+  max-width: 80em;
 }
 
 
@@ -109,4 +109,45 @@ body {
  */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
+}
+
+/* Custom CSS */
+.contents div #projects{
+	background-color: white;
+	font-size: 20;
+}
+
+.contents div #projects h2{
+	font-weight: bold;
+}
+
+/* CSS for the individual pages */
+.inner.cover{
+	background-color: rgb(204, 229, 255);
+	border-radius: 25px;
+	border: ridge;
+	height: 95%;
+	display: flex;
+}
+
+div #home,#projects{
+	padding: 5em;
+}
+
+div #examples{
+	display: flex;
+	min-height: 100%;
+}
+
+#examples > ul{
+	background-color: rgb(16, 60, 252);
+}
+
+#examples>.nav-item:hover{
+	background-color: white;
+	color: rgb(16, 60, 252);
+}
+
+.page-body{
+	padding-left: 2em;
 }

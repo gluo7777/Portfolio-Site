@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: meta"></head>
+
+<body class="text-center">
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+		<div th:replace="fragments/header :: navigation-bar"></div>
+		<main role="main" class="inner cover">
+			<!--/* This code will be removed at thymeleaf parsing time! */-->
+			<!--/* Dynamically generate contents based on request url */-->
+			<div th:if="${#httpServletRequest.getRequestURI() == '/home'}">
+				<div th:replace="pages/home :: home">Home content</div>
+			</div>
+			<div th:if="${#httpServletRequest.getRequestURI() == '/projects'}">
+				<div th:replace="pages/projects :: projects">Projects content</div>
+			</div>
+			<div th:if="${#httpServletRequest.getRequestURI().matches('/apps|/ideas|/contact')}">
+				<div th:replace="pages/wip :: wip">Other content</div>
+			</div>
+			<div th:if="${#httpServletRequest.getRequestURI() == '/examples'}">
+				<div th:replace="pages/examples :: examples">Other content</div>
+			</div>
+		</main>
+		<div th:if="${#httpServletRequest.getRequestURI() == '/home'}">
+			<div th:replace="fragments/footer :: footer"></div>
+		</div>
+	</div>
+</body>
+
+</html>
